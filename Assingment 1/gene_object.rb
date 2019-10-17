@@ -37,17 +37,9 @@ class Gene
   end
 
   # method to get the object with the wanted ID
-  def self.get_gene_id(id)
+  def self.get_gene_info(id)
     objs = @list_obj.find { |obj| obj.gene_id == id }
     abort 'Error: gene id not found in database, please try again.' if objs.nil?
     objs
   end
 end
-
-###### testing the class
-# require 'rest-client'
-# path = 'gene_information.tsv'
-# Gene.load_from_file(path)
-
-# path2 = 'gene_info_wrong_id.tsv'
-# Gene.load_from_file(path2)

@@ -51,9 +51,9 @@ puts "HybridCross object created"
 puts "\nDo you want to plant in specific stocks?"
 ans = $stdin.gets.chomp
 if Regexp.new(/[Yy]es|[Ss]i|[Ss]|[Yy]/).match(ans)
-  puts "\nPlease enter the stock ids you want to do the planting:"
+  puts "\nPlease enter the stock ids you want to do the planting (separated by an space):"
   list_id = $stdin.gets.chomp.split
-  puts "\nPlease enter the number of seeds you want to plant (you can plant different num of seeds for each stock):"
+  puts "\nPlease enter the number of seeds you want to plant (a number for each stock separated by a space):"
   num_seeds = $stdin.gets.chomp.split
   puts "\nPlanting seeds..."
   inputs = Hash[list_id.zip(num_seeds)]
@@ -66,29 +66,27 @@ else
   objs.map { |obj| SeedStock.plant(obj.seed_stock, num_seeds) }
 end
 
-### SAVING CHANGES IN DATABASE
-SeedStock.write_database(fname_out)
-# puts "\nDo you want to update database?"
-# ans = $stdin.gets.chomp
-# if Regexp.new(/[Yy]es|[Ss]i|[Ss]|[Yy]/).match(ans)
-#   SeedStock.write_database(fname_out)
-# else
-#   puts "\nWarning: an updated file has not been created.\n"
-# end
-
 ### LINKED GENES REPORT
 puts "\nChecking linked genes..."
 final_report = []
 linked_genes_chi = HybridCross.linked_genes_check
 linked_genes_chi.each do |pair|
   *genes, chi = pair
-  gene_ids = genes.map { |gene| SeedStock.get_seed_stock(gene).mutant_gene_id }
-  gene_names = gene_ids.map { |gene| Gene.get_gene_id(gene).gene_name }
-  puts "Recording: #{gene_names[0]} is genetically linked to #{gene_names[1]} with chisquare score #{chi}"
-  final_report << " #{gene_names[0]} and #{gene_names[1]} are linked to  each other."
+  puts "Recording: #{genes[0]} is genetically linked to #{genes[1]} with chisquare score #{chi}"
+  final_report << " #{genes[0]} and #{genes[1]} are linked to  each other."
 end
 
 puts "\nFinal report:"
 puts final_report
-puts "\nNew stock file:"
-puts IO.readlines(fname_out)
+
+### SAVING CHANGES IN DATABASE
+
+puts "\nDo you want to update database?"
+ans = $stdin.gets.chomp
+if Regexp.new(/[Yy]es|[Ss]i|[Ss]|[Yy]/).match(ans)
+  SeedStock.write_database(fname_out)
+  puts "\nNew stock file:"
+  puts IO.readlines(fname_out)
+else
+  puts "\nWarning: an updated file has not been created.\n"
+end

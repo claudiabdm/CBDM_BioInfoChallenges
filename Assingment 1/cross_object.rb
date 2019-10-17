@@ -48,22 +48,11 @@ class HybridCross
     @list_obj.each do |obj|
       next unless obj.chi_sq >= value
 
-      linked_genes_chi << [obj.parent1.seed_stock.to_s, obj.parent2.seed_stock.to_s, obj.chi_sq]
+      # store linked genes (as gene_names) and chi square in a list
+      linked_genes_chi << [obj.parent1.mutant_gene_id.gene_name.to_s,
+                           obj.parent2.mutant_gene_id.gene_name.to_s,
+                           obj.chi_sq]
     end
     linked_genes_chi
   end
 end
-
-###### testing the class
-# require './seed_stock.rb'
-# require './gene_object.rb'
-# path1 = './gene_information.tsv'
-# Gene.load_from_file(path1)
-# path2 = './seed_stock_data.tsv'
-# SeedStock.load_from_file(path2)
-# path3 = './cross_data.tsv'
-# HybridCross.load_from_file(path3)
-# puts HybridCross.linked_genes_check
-# puts SeedStock.instance_variable_get(:@header)
-# puts Gene.instance_variable_get(:@header)
-# puts HybridCross.instance_variable_get(:@header)

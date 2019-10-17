@@ -22,7 +22,7 @@ class SeedStock
     File.readlines(file_path)[1..-1].each do |line|
       data = line.strip.split("\t")
       @list_obj << SeedStock.new(seed_stock: data[0],
-                                 mutant_gene_id: Gene.get_gene_id(data[1]),
+                                 mutant_gene_id: Gene.get_gene_info(data[1]),
                                  last_planted: data[2],
                                  storage: data[3],
                                  grams_remaining: data[4])
@@ -61,7 +61,7 @@ class SeedStock
   def self.get_seed_stock(id)
     id = String(id)
     objs = @list_obj.find { |obj| obj.seed_stock == id }
-    abort 'Error: seed stock ∫id not found in database, please try again.' if objs.nil?
+    abort 'Error: seed stock id not found in database, please try again.' if objs.nil?
     objs
   end
 
@@ -79,19 +79,3 @@ class SeedStock
     puts "\nSucces! #{fname_out} added to #{Dir.pwd}\n"
   end
 end
-
-###### testing the class
-# require './gene_object.rb'
-# path1 = 'gene_information.tsv'
-# Gene.load_from_file(path1)
-# path2 = 'seed_stock_data.tsv'
-# SeedStock.load_from_file(path2)
-# SeedStock.get_seed_stock('AXXX')
-# # plant only for that id and num
-# SeedStock.plant('A348', 7)
-# SeedStock.write_database('new_data_test.tsv')
-
-# # plants for all database
-# objs = SeedStock.load_from_file(path2)
-# objs.map { |obj| SeedStock.plant(obj.seed_stock, 7) }
-# SeedStock.write_database('new_data_test.tsv')
