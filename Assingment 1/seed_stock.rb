@@ -54,7 +54,7 @@ class SeedStock
       end
     end
   rescue ArgumentError
-    puts 'ValueError: input must be an integer number.'
+    abort 'ValueError: input must be an integer number.'
   end
 
   # method to obtain record info based on id

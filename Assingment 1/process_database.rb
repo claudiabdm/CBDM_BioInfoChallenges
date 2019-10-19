@@ -73,7 +73,7 @@ linked_genes_chi = HybridCross.linked_genes_check
 linked_genes_chi.each do |pair|
   *genes, chi = pair
   puts "Recording: #{genes[0]} is genetically linked to #{genes[1]} with chisquare score #{chi}"
-  final_report << " #{genes[0]} and #{genes[1]} are linked to  each other."
+  final_report << " #{genes[0]} and #{genes[1]} are linked to each other."
 end
 
 puts "\nFinal report:"
