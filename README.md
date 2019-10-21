@@ -1,5 +1,5 @@
 # CBDM_BioInfoChallenges
-A code repository for the Bioinformatics Programming Challenges Course of the MSc in Computional Biology. 
+A code repository for the Bioinformatics Programming Challenges course of the Master's degree in Computional Biology. 
 
 ## Assignment 1:
 Program to simulate the planting of a number of seeds in a stock database and save the updated data to a new file. It also reports the genes that are genetically linked.
