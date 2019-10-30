@@ -20,7 +20,7 @@ class Gene
     end
     @gene_name = params.fetch(:gene_name, 'xxx')
     @mutant_phenotype = params.fetch(:mutant_phenotype, 'info not available')
-    @linked_genes = params.fetch(:linked, false)
+    @linked_genes = params.fetch(:linked_genes , false)
   end
 
   # creates objects for each record and a list of them so it is easy to access to the objects

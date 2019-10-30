@@ -48,6 +48,8 @@ class HybridCross
     @list_obj.each do |obj|
       next unless obj.chi_sq >= value
 
+      obj.parent1.mutant_gene_id.linked_genes = obj.parent2.mutant_gene_id.gene_name
+      obj.parent2.mutant_gene_id.linked_genes = obj.parent1.mutant_gene_id.gene_name
       # store linked genes (as gene_names) and chi square in a list
       linked_genes_chi << [obj.parent1.mutant_gene_id.gene_name.to_s,
                            obj.parent2.mutant_gene_id.gene_name.to_s,
