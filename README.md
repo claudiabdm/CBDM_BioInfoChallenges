@@ -10,9 +10,9 @@ Program to simulate the planting of a number of seeds in a stock database and sa
   
 ### Command
 
- '''
+ ```
  ruby process_database.rb gene_information.tsv seed_stock_data.tsv cross_data.tsv new_file_data.tsv
- '''
+ ```
 
 Last row of each data file was added to test the program.
 
@@ -33,7 +33,7 @@ This program will find protein-protein interactions between genes from a gene co
   
  ### Command
   
- '''
+ ```
  ruby main.rb gene_codes_list.txt name_report_file.txt
- '''
+ 
 
