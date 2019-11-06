@@ -17,6 +17,8 @@ gem install rest-client
 gem install ruby-progressbar
 ```
 
+### Description
+
 This program will find protein-protein interactions between genes from a gene codes list and will predict possible interaction networks. It will return a report file with all the interaction networks with KEGG and GO functional annotations for the network and for members. 
   - Input files: gene_codes_list.txt name_report_file.txt
   - Output file: name_report_file.txt
