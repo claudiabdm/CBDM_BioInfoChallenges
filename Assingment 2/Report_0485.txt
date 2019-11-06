@@ -1,0 +1,203 @@
+--------------------------------------------------------------------------------------
+  Total interaction networks found: 4 (deepest level = 3) (PPI scores >= 0.485)
+--------------------------------------------------------------------------------------
+-> Direct networks are those in which all members belong to the gene list.
+-> Indirect networks are those in which members A and C belong to the gene list
+   but not B.
+
+Direct Networks: 0
+Indirect Networks: 4
+
+Network 1: At4g17460 interacts with At3g07220 interacts with At5g15850 (indirect)
+Network 2: At4g17460 interacts with At3g15030 interacts with At5g17300 (indirect)
+Network 3: At5g15850 interacts with At3g02150 interacts with At5g17300 (indirect)
+Network 4: At5g17300 interacts with At1g60250 interacts with At1g71030 (indirect)
+----------------------------------------------------------------------------------
+                   Network 1 (deep level = 3)
+----------------------------------------------------------------------------------
+At4g17460 interacts with At3g07220 interacts with At5g15850 (indirect)
+-----------
+| Members |
+-----------
+At4g17460 At3g07220 At5g15850
+---------------------------
+| Annotations for network |
+---------------------------
+
+GO terms in common with all members:
+Common GO annotations not found.
+
+Total KEGG terms:
+KEGG annotations not found.
+
+---------------------------
+| Annotations for members |
+---------------------------
+Gene ID: At4g17460
+KEGG annotation not found
+GO_ID	Go_Term
+0003006	P:developmental process involved in reproduction
+0010582	P:floral meristem determinacy
+0080127	P:fruit septum development
+0048467	P:gynoecium development
+
+Gene ID: At3g07220
+KEGG annotation not found
+GO_ID	Go_Term
+0048638	P:regulation of developmental growth
+0080086	P:stamen filament development
+0046654	P:tetrahydrofolate biosynthetic process
+
+Gene ID: At5g15850
+KEGG annotation not found
+GO_ID	Go_Term
+0009909	P:regulation of flower development
+0000398	P:mRNA splicing, via spliceosome
+
+----------------------------------------------------------------------------------
+                   Network 2 (deep level = 3)
+----------------------------------------------------------------------------------
+At4g17460 interacts with At3g15030 interacts with At5g17300 (indirect)
+-----------
+| Members |
+-----------
+At4g17460 At3g15030 At5g17300
+---------------------------
+| Annotations for network |
+---------------------------
+
+GO terms in common with all members:
+Common GO annotations not found.
+
+Total KEGG terms:
+KEGG annotations not found.
+
+---------------------------
+| Annotations for members |
+---------------------------
+Gene ID: At4g17460
+KEGG annotation not found
+GO_ID	Go_Term
+0003006	P:developmental process involved in reproduction
+0010582	P:floral meristem determinacy
+0080127	P:fruit septum development
+0048467	P:gynoecium development
+
+Gene ID: At3g15030
+KEGG annotation not found
+GO_ID	Go_Term
+0030154	P:cell differentiation
+0048825	P:cotyledon development
+0048826	P:cotyledon morphogenesis
+0009793	P:embryo development ending in seed dormancy
+0048366	P:leaf development
+0009965	P:leaf morphogenesis
+0045962	P:positive regulation of development, heterochronic
+2000032	P:regulation of secondary shoot formation
+0048831	P:regulation of shoot system development
+0006355	P:regulation of transcription, DNA-templated
+
+Gene ID: At5g17300
+KEGG annotation not found
+GO_ID	Go_Term
+0009734	P:auxin-activated signaling pathway
+0007623	P:circadian rhythm
+0010600	P:regulation of auxin biosynthetic process
+0006355	P:regulation of transcription, DNA-templated
+
+----------------------------------------------------------------------------------
+                   Network 3 (deep level = 3)
+----------------------------------------------------------------------------------
+At5g15850 interacts with At3g02150 interacts with At5g17300 (indirect)
+-----------
+| Members |
+-----------
+At5g15850 At3g02150 At5g17300
+---------------------------
+| Annotations for network |
+---------------------------
+
+GO terms in common with all members:
+Common GO annotations not found.
+
+Total KEGG terms:
+KEGG annotations not found.
+
+---------------------------
+| Annotations for members |
+---------------------------
+Gene ID: At5g15850
+KEGG annotation not found
+GO_ID	Go_Term
+0009909	P:regulation of flower development
+0000398	P:mRNA splicing, via spliceosome
+
+Gene ID: At3g02150
+KEGG annotation not found
+GO_ID	Go_Term
+0030154	P:cell differentiation
+0048366	P:leaf development
+0009965	P:leaf morphogenesis
+0045962	P:positive regulation of development, heterochronic
+0031347	P:regulation of defense response
+0006355	P:regulation of transcription, DNA-templated
+0006021	P:inositol biosynthetic process
+0046855	P:inositol phosphate dephosphorylation
+0046854	P:phosphatidylinositol phosphorylation
+
+Gene ID: At5g17300
+KEGG annotation not found
+GO_ID	Go_Term
+0009734	P:auxin-activated signaling pathway
+0007623	P:circadian rhythm
+0010600	P:regulation of auxin biosynthetic process
+0006355	P:regulation of transcription, DNA-templated
+
+----------------------------------------------------------------------------------
+                   Network 4 (deep level = 3)
+----------------------------------------------------------------------------------
+At5g17300 interacts with At1g60250 interacts with At1g71030 (indirect)
+-----------
+| Members |
+-----------
+At5g17300 At1g60250 At1g71030
+---------------------------
+| Annotations for network |
+---------------------------
+
+GO terms in common with all members:
+Common GO annotations not found.
+
+Total KEGG terms:
+KEGG annotations not found.
+
+---------------------------
+| Annotations for members |
+---------------------------
+Gene ID: At5g17300
+KEGG annotation not found
+GO_ID	Go_Term
+0009734	P:auxin-activated signaling pathway
+0007623	P:circadian rhythm
+0010600	P:regulation of auxin biosynthetic process
+0006355	P:regulation of transcription, DNA-templated
+
+Gene ID: At1g60250
+KEGG annotation not found
+GO_ID	Go_Term
+0006355	P:regulation of transcription, DNA-templated
+
+Gene ID: At1g71030
+KEGG annotation not found
+GO_ID	Go_Term
+0009718	P:anthocyanin-containing compound biosynthetic process
+0030154	P:cell differentiation
+0010023	P:proanthocyanidin biosynthetic process
+0009737	P:response to abscisic acid
+0046686	P:response to cadmium ion
+0009723	P:response to ethylene
+0009739	P:response to gibberellin
+0009753	P:response to jasmonic acid
+0009751	P:response to salicylic acid
+0009651	P:response to salt stress
+

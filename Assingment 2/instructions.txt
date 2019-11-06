@@ -1,0 +1,60 @@
+### INSTRUCTIONS
+A recent paper (DOI: 10.1371/journal.pone.0108567) executes a meta-analysis of a few thousand published co-expressed gene sets from Arabidopsis.  
+They break these co-expression sets into ~20 sub-networks of <200 genes each, that they find consistently co-expressed with one another.  
+Assume that you want to take the next step in their analysis, and see if there is already information linking these predicted sub-sets into known regulatory networks.  
+One step in this analysis would be to determine if the co-expressed genes are known to bind to one another.
+
+Take the co-expressed gene list from Table S2 of the supplementary data from their analysis (I have extracted the data as text for you on the course Moodle → a list of AGI Locus Codes).  
+Using a combination of the dbFetch, the Togo REST API, EBI’s PSICQUIC (IntAct) REST, and/or the DDBJ KEGG REST interface, and the Gene Ontology, 
+find all protein-protein interaction networks that members of that list participate in, and determine which members of this gene list interact with each other.  
+USE COMMON SENSE FILTERS IN YOUR CODE! (e.g. for species!!!).
+
+TASKS:  
+
+Create an “InteractionNetwork” Object to contain the members of each network
+
+Annotate it with any KEGG Pathways the interaction network members are part of both KEGG ID and Pathway Name
+
+Annotate it with the GO Terms associated with the total of all genes in the network
+BUT ONLY FROM THE biological_process part of the GO Ontology!
+
+Both GO:ID and GO Term Name
+
+Create a report of which members of the gene list interact with one another, together with the KEGG/GO functional annotations of those interacting members.
+
+BONUS MARKS (to get +2% up to a perfect score)
++1% if you create a ‘uso-general’ annotation object that can hold any functional annotation
++1% if you also annotate with the AraCyc pathways (see linked file on Moodle)
+
+Hints:  You need to make "smart" decisions...  A interacts with B interacts with A creates an infinite loop.   
+A interacts with B interacts with C interacts with D interacts with E interacts with F... how deep should you go?
+
+
+### MESSAGE
+Dear Class,
+
+We didn't have time to discuss Assignment #2 deeply, so I am sending this message to give you some additional hints and advice.
+
+The example URL that I provide in the Moodle - the IntAct service from EBI - is one possible protein-protein interaction database that uses the Psicquic REST interface. 
+Others are here: http://www.ebi.ac.uk/Tools/webservices/psicquic/registry/registry?action=STATUS (the ones highlighted in red are currently not working). 
+
+* Note that many of these ONLY CONTAIN HUMAN PROTEINS, so they will not be useful for you! 
+I would suggest that you use the EBI service at the URL that I give you in the instructions. 
+
+* Note also: The EBI IntAct service can accept Arabidopsis AGI Locus Codes as the query 
+(which is what you have in your assignment data file), which means you DON'T NEED TO CONVERT the AGI Code to a UniProt protein identifier... 
+so its probably best to use EBI IntAct smile).
+
+* Note also: Protein-protein interaction databases OFTEN CONTAIN INTERACTIONS BETWEEN PROTEINS IN DIFFERENT SPECIES!!!!! 
+You will need to create a filter to make sure that you are only getting interactions with other Arabidopsis proteins! 
+(I will look for this in your code, and if you don't do it, you will lose points)
+
+* Finally, note that some protein-protein interaction technologies generate many false-positives... you might want to read (or ask someone knowledgeable) to discover which technologies are the most accurate, 
+and then filter the results based on which technology generated the interaction recorded in the database. 
+False positives quickly result in an interaction network that is totally meaningless smile (everything interacts with everything!)
+
+This is the most difficult assignment of the year, so please start thinking about it soon!
+
+See you next week!
+
+Mark
