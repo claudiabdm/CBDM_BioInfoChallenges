@@ -1,0 +1,8 @@
+Genes were CTTCTT sequences were not found:
+AT4g27030
+AT2g34420
+AT5g01015
+AT1g14150
+AT1g28330
+AT1g29910
+AT1g29920
