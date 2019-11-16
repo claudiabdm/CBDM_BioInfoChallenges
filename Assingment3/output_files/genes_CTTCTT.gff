@@ -1,0 +1,20 @@
+##gff-version 3
+AT5g54270	.	dispersed_repeat	1098	1103	.	+	.	ID=CTTCTT_AT5G54270.1.exon3_1; Parent=AT5G54270.1.exon3; Note=1098..1103
+AT1g21400	.	dispersed_repeat	213	218	.	+	.	ID=CTTCTT_AT1G21400.2.exon1_1; Parent=AT1G21400.2.exon1; Note=213..218
+AT1g21400	.	dispersed_repeat	246	251	.	+	.	ID=CTTCTT_AT1G21400.2.exon1_2; Parent=AT1G21400.2.exon1; Note=246..251
+AT1g21400	.	dispersed_repeat	254	259	.	+	.	ID=CTTCTT_AT1G21400.2.exon1_3; Parent=AT1G21400.2.exon1; Note=254..259
+AT1g21400	.	dispersed_repeat	213	218	.	+	.	ID=CTTCTT_AT1G21400.1.exon1_1; Parent=AT1G21400.1.exon1; Note=213..218
+AT1g21400	.	dispersed_repeat	246	251	.	+	.	ID=CTTCTT_AT1G21400.1.exon1_2; Parent=AT1G21400.1.exon1; Note=246..251
+AT1g21400	.	dispersed_repeat	254	259	.	+	.	ID=CTTCTT_AT1G21400.1.exon1_3; Parent=AT1G21400.1.exon1; Note=254..259
+AT1g21400	.	dispersed_repeat	213	218	.	+	.	ID=CTTCTT_AT1G21400.4.exon1_1; Parent=AT1G21400.4.exon1; Note=213..218
+AT1g21400	.	dispersed_repeat	246	251	.	+	.	ID=CTTCTT_AT1G21400.4.exon1_2; Parent=AT1G21400.4.exon1; Note=246..251
+AT1g21400	.	dispersed_repeat	254	259	.	+	.	ID=CTTCTT_AT1G21400.4.exon1_3; Parent=AT1G21400.4.exon1; Note=254..259
+AT1g21400	.	dispersed_repeat	213	218	.	+	.	ID=CTTCTT_AT1G21400.5.exon1_1; Parent=AT1G21400.5.exon1; Note=213..218
+AT1g21400	.	dispersed_repeat	246	251	.	+	.	ID=CTTCTT_AT1G21400.5.exon1_2; Parent=AT1G21400.5.exon1; Note=246..251
+AT1g21400	.	dispersed_repeat	254	259	.	+	.	ID=CTTCTT_AT1G21400.5.exon1_3; Parent=AT1G21400.5.exon1; Note=254..259
+AT1g21400	.	dispersed_repeat	213	218	.	+	.	ID=CTTCTT_AT1G21400.3.exon1_1; Parent=AT1G21400.3.exon1; Note=213..218
+AT1g21400	.	dispersed_repeat	246	251	.	+	.	ID=CTTCTT_AT1G21400.3.exon1_2; Parent=AT1G21400.3.exon1; Note=246..251
+AT1g21400	.	dispersed_repeat	254	259	.	+	.	ID=CTTCTT_AT1G21400.3.exon1_3; Parent=AT1G21400.3.exon1; Note=254..259
+AT1g21400	.	dispersed_repeat	213	218	.	+	.	ID=CTTCTT_AT1G21400.6.exon1_1; Parent=AT1G21400.6.exon1; Note=213..218
+AT1g21400	.	dispersed_repeat	246	251	.	+	.	ID=CTTCTT_AT1G21400.6.exon1_2; Parent=AT1G21400.6.exon1; Note=246..251
+AT1g21400	.	dispersed_repeat	254	259	.	+	.	ID=CTTCTT_AT1G21400.6.exon1_3; Parent=AT1G21400.6.exon1; Note=254..259
