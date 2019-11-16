@@ -54,6 +54,8 @@ This program will find the desired motif in the exons of genes from a list of AG
   - Output file: genes_motif.txt genome_motif.txt genes_without_motif_in_any_exon.txt
   
  ### Command
+ 
+ It can be ran in the terminal. There is also a jupyter notebook available (the Assingment3.pynb).
   
  ```
  ruby main.rb gene_codes_list.txt
