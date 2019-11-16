@@ -1,5 +1,5 @@
 ##
-# Module for all function used in Assingment 3
+# Module for all function used in Assingment 3.
 module Functions
   module_function
 
@@ -26,54 +26,20 @@ module Functions
   end
 
   ##
-  # Deletes genes where motif was not found
-  # Returns a new records hash without those genes
-  def genes_with_motif(records, motif)
-    re = Regexp.new(Bio::Sequence::NA.new(motif.to_s).to_re)
-    genes_with_motif = records.dup
-    genes_with_motif.each do |gene, entry|
-      # First, find out the gene strand and then, check that the motif is in the sequence.
-      if entry.features.find { |feat| feat.feature == 'gene' }.position.match('complement').nil? # positive strand
-        genes_with_motif.delete(gene) if entry.to_biosequence.match(re).nil?
-      else # negative strand
-        genes_with_motif.delete(gene) if entry.to_biosequence.reverse_complement.match(re).nil?
-      end
-    end
-    puts "Number of genes where #{motif} sequences were found: #{genes_with_motif.length}"
-    genes_with_motif
-  end
-
-  ##
-  # Creates a report with genes that do not have the repeat motif.
-  def genes_without_motif(records, motif)
-    re = Regexp.new(Bio::Sequence::NA.new(motif.to_s).to_re)
-    File.open("./output_files/genes_without_#{motif}.txt", 'w+') do |f|
-      f.puts "Genes where #{motif} sequences were not found:"
-      records.each do |gene, entry|
-        # next if CTTCTT sequence is found in any strand of the exon
-        next unless entry.to_biosequence.match(re).nil? && entry.to_biosequence.reverse_complement.match(re).nil?
-
-        f.puts gene.to_s
-      end
-    end
-    puts "genes_without_#{motif}.gff created and saved in #{Dir.pwd}/output_files\n"
-  end
-
-  ##
-  # Get coordinates where motifs occur within the exons of genes
-  # Returns a list with those coordinates
+  # Get coordinates where motifs occur within the exons of genes.
+  # Returns a list with those coordinates.
   def motif_coordinates(motif, gene_length, exon_position, strand, sequence)
     re = Regexp.new(Bio::Sequence::NA.new(motif.to_s).to_re)
     coordinates = []
     # Coordinates for the positive(seq_coord) and negative(comp_coord) strands
     # How to find the position: https://stackoverflow.com/a/51901945/10871520
     if strand.nil?
-      motif_coord = sequence.gsub(re).map { Range.new(*[Regexp.last_match.begin(0), Regexp.last_match.end(0)-1])}
+      motif_coord = sequence.gsub(re).map { Range.new(*[Regexp.last_match.begin(0), Regexp.last_match.end(0) - 1])}
       [*motif_coord].each do |coord|
         coordinates << coord if (coord.first <= exon_position.last) && (exon_position.first <= coord.last)
       end
     else
-      motif_coord = sequence.reverse_complement.gsub(re).map { Range.new(*[gene_length - Regexp.last_match.begin(0), gene_length - Regexp.last_match.end(0) +1 ])}
+      motif_coord = sequence.reverse_complement.gsub(re).map { Range.new(*[gene_length - Regexp.last_match.begin(0), gene_length - Regexp.last_match.end(0) + 1 ])}
       [*motif_coord].each do |coord|
         coordinates << "complement(#{coord})" if (coord.first <= exon_position.last) && (exon_position.first <= coord.last)
       end
@@ -82,10 +48,9 @@ module Functions
   end
 
   ##
-  # Scan motifs within exons of a gene
-  # Return a hash where the key is the exon id and values are the motif coordinates
+  # Scan motifs within exons of a gene.
+  # Return a hash where the key is the exon id and values are the motif coordinates.
   def scan_exons(genes_with_motif, motif)
-    re = Regexp.new(Bio::Sequence::NA.new(motif.to_s).to_re)
     motif_coord_in_exon = Hash.new { |h, k| h[k] = [] }
     genes_with_motif.each do |gene, entry|
       # Select the exon feature and check if motifs are in exons
@@ -104,14 +69,24 @@ module Functions
         motif_coord_in_exon[exon_id] << coord unless coord.empty? # if motif were not found, coordinates are nil
       end
     end
-    total_exons = motif_coord_in_exon.keys.uniq.length
-    puts "Number of exons where #{motif} sequences were found: #{total_exons}"
+    total_exons = motif_coord_in_exon.keys.map{ |exon_id| exon_id.split('.')[0]}.uniq.length
+    puts "Number of genes where #{motif} sequences were found in at least one exon: #{total_exons}"
     motif_coord_in_exon
+  end
+  ##
+  # Reports genes where the motif is not found in any of their exons.
+  def genes_without_motif_exons(records, motif_coord_in_exon, motif)
+    all_genes = records.keys.map(&:downcase)
+    genes_motif_in_exons = motif_coord_in_exon.keys.map { |exon_id| exon_id.split('.')[0].downcase }
+    File.open("./output_files/genes_without_#{motif}_in_any_exon.txt", 'w+') do |f|
+      f.puts "Genes where #{motif} sequences were not found in any exon:"
+      (all_genes - genes_motif_in_exons).each { |gene| f.puts gene.upcase }
+    end
   end
 
   ##
-  # Creates and adds repeat_region feature to the ensemble sequence object
-  # The feature position is the motif coordinates
+  # Creates and adds repeat_region feature to the ensemble sequence object.
+  # The feature position is the motif coordinates.
   def add_motif_feature(genes_with_motif, motif_coord_in_exon, motif)
     genes_with_motif.each do |gene, entry|
       bioseq = entry.to_biosequence
@@ -137,7 +112,7 @@ module Functions
   end
 
   ##
-  # Creates a gff file with genes coordinates
+  # Creates a gff file with genes coordinates.
   def create_gff_genes (genes_with_motif, motif)
     File.open("./output_files/genes_#{motif}.gff", 'w+') do |f|
       f.puts '##gff-version 3'
@@ -167,12 +142,12 @@ module Functions
   end
 
   ##
-  # Creates a gff file with genome coordinates
+  # Creates a gff file with genome coordinates.
   def create_gff_genome (genes_with_motif, motif)
     File.open("./output_files/genome_#{motif}.gff", 'w+') do |f|
       f.puts '##gff-version 3'
       exons_added = []
-      genes_with_motif.each do |gene, entry|
+      genes_with_motif.each do |_gene, entry|
         seqid = entry.entry_id.strip
         coord = entry.ac[0].split(':')[3..4].map(&:to_i) # gene coordinates
         source = '.'

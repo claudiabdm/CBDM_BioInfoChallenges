@@ -1,2 +1,0 @@
-Genes where CTTCTT sequences were not found:
-AT4g27030
