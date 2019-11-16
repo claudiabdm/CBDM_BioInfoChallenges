@@ -73,6 +73,7 @@ module Functions
     puts "Number of genes where #{motif} sequences were found in at least one exon: #{total_exons}"
     motif_coord_in_exon
   end
+  
   ##
   # Reports genes where the motif is not found in any of their exons.
   def genes_without_motif_exons(records, motif_coord_in_exon, motif)
