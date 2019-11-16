@@ -35,5 +35,26 @@ This program will find protein-protein interactions between genes from a gene co
   
  ```
  ruby main.rb gene_codes_list.txt name_report_file.txt
- 
+ ```
 
+## Assignment 3:
+
+### Gems needed
+
+```
+gem install 'rest-client'
+gem install 'bio'
+gem install 'ruby-progressbar'
+```
+
+### Description
+
+This program will find the desired motif in the exons of genes from a list of AGI codes and will execute a GFF3 file recording each repeat. This file can be used to display the repeats in a genome browser.
+  - Input files: gene_codes_list.txt
+  - Output file: genes_motif.txt genome_motif.txt genes_without_motif_in_any_exon.txt
+  
+ ### Command
+  
+ ```
+ ruby main.rb gene_codes_list.txt
+ ```
