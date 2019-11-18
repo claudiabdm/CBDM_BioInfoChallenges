@@ -31,7 +31,7 @@ module Functions
   def motif_coordinates(motif, gene_length, exon_position, strand, sequence)
     re = Regexp.new(Bio::Sequence::NA.new(motif.to_s).to_re)
     coordinates = []
-    # Coordinates for the positive(seq_coord) and negative(comp_coord) strands
+    # Coordinates for the positive(strand == nil) and negative(strand == complement) strands
     # How to find the position: https://stackoverflow.com/a/51901945/10871520
     if strand.nil?
       motif_coord = sequence.gsub(re).map { Range.new(*[Regexp.last_match.begin(0), Regexp.last_match.end(0) - 1])}
@@ -114,15 +114,12 @@ module Functions
 
   ##
   # Creates a gff file with genes coordinates.
-  def create_gff_genes (genes_with_motif, motif)
+  def create_gff_genes (genes_with_motif, motif, source = '.', score = '.', phase = '.')
     File.open("./output_files/genes_#{motif}.gff", 'w+') do |f|
       f.puts '##gff-version 3'
       exons_added = []
       genes_with_motif.each do |gene, entry|
         seqid = gene
-        source = '.'
-        score = '.'
-        phase = '.'
         entry.features.each do |feature|
           next unless feature.assoc['rpt_unit_seq'] == motif.to_s
 
@@ -144,16 +141,13 @@ module Functions
 
   ##
   # Creates a gff file with genome coordinates.
-  def create_gff_genome (genes_with_motif, motif)
+  def create_gff_genome (genes_with_motif, motif, source = '.', score = '.', phase = '.')
     File.open("./output_files/genome_#{motif}.gff", 'w+') do |f|
       f.puts '##gff-version 3'
       exons_added = []
       genes_with_motif.each do |_gene, entry|
         seqid = entry.entry_id.strip
         coord = entry.ac[0].split(':')[3..4].map(&:to_i) # gene coordinates
-        source = '.'
-        score = '.'
-        phase = '.'
         entry.features.each do |feature|
           next unless feature.assoc['rpt_unit_seq'] == motif.to_s
 
