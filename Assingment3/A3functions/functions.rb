@@ -50,9 +50,9 @@ module Functions
   ##
   # Scan motifs within exons of a gene.
   # Return a hash where the key is the exon id and values are the motif coordinates.
-  def scan_exons(genes_with_motif, motif)
+  def scan_exons(records, motif)
     motif_coord_in_exon = Hash.new { |h, k| h[k] = [] }
-    genes_with_motif.each do |gene, entry|
+    records.each do |gene, entry|
       # Select the exon feature and check if motifs are in exons
       gene_position = entry.ac[0].split(':')[3..4].map(&:to_i) # gene coordinates
       gene_length = gene_position[1] - gene_position[0] # this is use to get the correct coordinates for complement sequence
@@ -88,8 +88,8 @@ module Functions
   ##
   # Creates and adds repeat_region feature to the ensemble sequence object.
   # The feature position is the motif coordinates.
-  def add_motif_feature(genes_with_motif, motif_coord_in_exon, motif)
-    genes_with_motif.each do |gene, entry|
+  def add_motif_feature(records, motif_coord_in_exon, motif)
+    records.each do |gene, entry|
       bioseq = entry.to_biosequence
       motif_coord_in_exon.each do |exon, coords|
         next if exon.match(/#{gene}/i).nil? # to avoid exons be added in wrong gene
@@ -114,11 +114,11 @@ module Functions
 
   ##
   # Creates a gff file with genes coordinates.
-  def create_gff_genes (genes_with_motif, motif, source = '.', score = '.', phase = '.')
+  def create_gff_genes (records, motif, source = '.', score = '.', phase = '.')
     File.open("./output_files/genes_#{motif}.gff", 'w+') do |f|
       f.puts '##gff-version 3'
       exons_added = []
-      genes_with_motif.each do |gene, entry|
+      records.each do |gene, entry|
         seqid = gene
         entry.features.each do |feature|
           next unless feature.assoc['rpt_unit_seq'] == motif.to_s
@@ -141,11 +141,11 @@ module Functions
 
   ##
   # Creates a gff file with genome coordinates.
-  def create_gff_genome (genes_with_motif, motif, source = '.', score = '.', phase = '.')
+  def create_gff_genome (records, motif, source = '.', score = '.', phase = '.')
     File.open("./output_files/genome_#{motif}.gff", 'w+') do |f|
       f.puts '##gff-version 3'
       exons_added = []
-      genes_with_motif.each do |_gene, entry|
+      records.each do |_gene, entry|
         seqid = entry.entry_id.strip
         coord = entry.ac[0].split(':')[3..4].map(&:to_i) # gene coordinates
         entry.features.each do |feature|
