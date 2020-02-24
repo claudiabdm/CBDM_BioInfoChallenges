@@ -1,4 +1,4 @@
-CBDM_BioInfoChallenges
+# CBDM_BioInfoChallenges
 A code repository for the Bioinformatics Programming Challenges course of the Master's degree in Computional Biology. 
 
 ## Assignment 1:
